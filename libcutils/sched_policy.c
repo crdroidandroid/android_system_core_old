@@ -108,14 +108,14 @@ static int add_tid_to_cgroup(int tid, int fd)
 #endif //defined(USE_CPUSETS) || defined(USE_SCHEDBOOST)
 
 static void __initialize(void) {
-    if (!access("/dev/cpuctl/tasks", F_OK)) {
+    if (!access("/dev/cpuctl/tasks", W_OK)) {
         __sys_supports_schedgroups = 1;
     } else {
         __sys_supports_schedgroups = 0;
     }
 
 #ifdef USE_CPUSETS
-    if (!access("/dev/cpuset/tasks", F_OK)) {
+    if (!access("/dev/cpuset/tasks", W_OK)) {
         char* filename;
         filename = "/dev/cpuset/foreground/tasks";
         fg_cpuset_fd = open(filename, O_WRONLY | O_CLOEXEC);
@@ -128,7 +128,7 @@ static void __initialize(void) {
     }
 
 #ifdef USE_SCHEDBOOST
-    if (!access("/dev/stune/tasks", F_OK)) {
+    if (!access("/dev/stune/tasks", W_OK)) {
         char* filename;
         filename = "/dev/stune/top-app/tasks";
         ta_schedboost_fd = open(filename, O_WRONLY | O_CLOEXEC);
