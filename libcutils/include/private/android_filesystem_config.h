@@ -129,6 +129,10 @@
 /* The range 2900-2999 is reserved for OEM, and must never be
  * used here */
 #define AID_OEM_RESERVED_START 2900
+#define AID_QTI_DIAG 2901
+#define AID_QCOM_DIAG 2950
+#define AID_RFS 2951
+#define AID_RFS_SHARED 2952
 #define AID_OEM_RESERVED_END 2999
 
 /* The 3000 series are intended for use as supplemental group id's only.
